@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const Comment = require('./models/comments.js');
 const uuid = require('uuid');
 
-const mongoDB = 'mongodb://localhost:8080/commentBoard';
+const mongoDB = 'mongodb://mongo:27017/commentBoard';
 mongoose.connect(mongoDB)
     .then(() => {
         console.log('Successful connection');

@@ -1,0 +1,27 @@
+version: "2"
+services:
+  web:
+    image: simple_web_site
+    ports:
+    - "3000:3000"
+    depends_on:
+    - mongo
+    environment:
+      WAIT_HOSTS: mongo:27017
+  mongo:
+    image: mongo:latest
+    volumes:
+    - C:/Users/kaohunglin/Desktop/note/code/nodeJS/web_scraping/mongodb:/data/db
+    ports:
+    - "27017:27017"
+  mongoExpress:
+    image: mongo-express:latest
+    depends_on:
+    - mongo
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_BASICAUTH_USERNAME=2234
+      - ME_CONFIG_BASICAUTH_PASSWORD=6678
+    ports:
+    - "8081:8081"
+    restart: always
